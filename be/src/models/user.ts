@@ -1,18 +1,4 @@
 import mongoose from "mongoose";
-export interface UserAttrs {
-  email: string
-  password: string
-}
-
-interface UserModel extends mongoose.Model<UserDoc> {
-  build(attrs: UserAttrs): UserDoc
-}
-
-export interface UserDoc extends mongoose.Document {
-  email: string
-  password: string
-  tokenVersion: number
-}
 
 const userSchema = new mongoose.Schema(
   {
@@ -34,13 +20,10 @@ const userSchema = new mongoose.Schema(
         delete ret.__v
       },
     },
-  }
+    timestamps: true
+  },
 )
 
-userSchema.statics.build = (attrs: UserAttrs) => {
-  return new User(attrs)
-}
+const User = mongoose.model("users", userSchema)
 
-const User = mongoose.model<UserDoc, UserModel>("users", userSchema)
-
-export { User }
+export default User;
