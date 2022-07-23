@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { BadRequestError, NotFoundError } from '../errors';
-import { User } from "../models/user";
+import { User } from "../models";
 import { encryptPassword } from "../utils";
 import { tokenService } from './token-service';
 
