@@ -1,10 +1,11 @@
 import { json } from "body-parser";
+import cors from 'cors';
 import 'dotenv/config';
 import express, { Request, Response } from 'express';
 import "express-async-errors";
-import cors from 'cors'
 
 import './db/mongoose';
+import { errorHandler } from "./middlewares/error-handler";
 import { tokenService } from "./services/token-service";
 import { userService } from './services/user-service';
 
@@ -31,6 +32,8 @@ app.post('/api/register', async (req, res) => {
   let user = await userService.register(body.email, body.password);
   res.send({ data: user });
 });
+
+app.use(errorHandler)
 
 const port = process.env.PORT || 3001
 
