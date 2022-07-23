@@ -5,7 +5,7 @@ import { UserDoc } from "../models/user"
 
 class TokenService {
   createAccessToken (user: UserDoc){
-    return sign({ userId: user.id }, process.env.ACCESS_TOKEN_SECRET!, {
+    return sign({ userId: user.id, email: user.email }, process.env.ACCESS_TOKEN_SECRET!, {
       expiresIn: "15s",
     })
   }

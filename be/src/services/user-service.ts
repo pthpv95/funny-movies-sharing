@@ -21,7 +21,7 @@ class UserService {
       throw new Error('USER_NOT_FOUND')
     }
 
-    const same = await bcrypt.compare(password, user.password)
+    let same = await bcrypt.compare(password, user.password)
     if(!same){
       throw new Error('INVALID_USERNAME_PASSWORD')
     }

@@ -2,13 +2,19 @@ import { json } from "body-parser";
 import 'dotenv/config';
 import express, { Request, Response } from 'express';
 import "express-async-errors";
+import cors from 'cors'
+
 import './db/mongoose';
 import { tokenService } from "./services/token-service";
 import { userService } from './services/user-service';
 
 let app = express()
-app.use(json())
+app.use(cors({
+  origin: process.env.ALLOW_ORIGIN_HOST,
+  credentials: true
+}))
 
+app.use(json())
 app.get("/", async (req: Request, res: Response) => {
   res.send("Hello world.")
 })
