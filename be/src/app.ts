@@ -5,7 +5,7 @@ import express, { Request, Response } from 'express';
 import "express-async-errors";
 
 import './db/mongoose';
-import { errorHandler } from "./middlewares/error-handler";
+import { authorized, errorHandler } from "./middlewares";
 import { movieService } from "./services/movie-service";
 import { tokenService } from "./services/token-service";
 import { userService } from './services/user-service';
@@ -34,7 +34,7 @@ app.post('/api/register', async (req, res) => {
   res.send({ data: { user } });
 });
 
-app.post('/api/movies', async (req, res) => {
+app.post('/api/movies', authorized, async (req, res) => {
   let body = req.body
   let createdBy = 'hp@mgail.com';
   console.log("🚀 ~ file: app.ts ~ line 39 ~ app.post ~ body", body)
