@@ -1,0 +1,30 @@
+.App {
+  padding: 10px 30px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 2px solid black;
+
+  .form-sign-in-up {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.movie-list {
+  padding: 50px 100px;
+
+  .movie-item {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 30px;
+    .info {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
