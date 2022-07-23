@@ -1,18 +1,17 @@
 import { Response } from "express"
 import { sign } from "jsonwebtoken"
-import { UserDoc } from "../models/user"
 
 
 class TokenService {
-  createAccessToken (user: UserDoc){
-    return sign({ userId: user.id, email: user.email }, process.env.ACCESS_TOKEN_SECRET!, {
+  createAccessToken (email: string){
+    return sign({ email }, process.env.ACCESS_TOKEN_SECRET!, {
       expiresIn: "15s",
     })
   }
   
-  createRefreshToken (user: UserDoc){
+  createRefreshToken (email: string){
     return sign(
-      { userId: user.id, tokenVersion: user.tokenVersion },
+      { email },
       process.env.REFRESH_TOKEN_SECRET!,
       {
         expiresIn: "7d",
