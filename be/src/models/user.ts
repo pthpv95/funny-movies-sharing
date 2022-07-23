@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import bcrypt from 'bcryptjs'
 export interface UserAttrs {
   email: string
   password: string
@@ -41,20 +40,6 @@ const userSchema = new mongoose.Schema(
 userSchema.statics.build = (attrs: UserAttrs) => {
   return new User(attrs)
 }
-
-userSchema.pre('save', function (next) {
-  let user: any = this
-  if (user.isModified("password")) {
-    bcrypt.genSalt(10, (_err: any, salt: any) => {
-      bcrypt.hash(user.password, salt, (_err: any, hash: any) => {
-        user.password = hash
-        next()
-      })
-    })
-  } else {
-    next()
-  }
-})
 
 const User = mongoose.model<UserDoc, UserModel>("users", userSchema)
 
