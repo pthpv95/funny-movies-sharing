@@ -27,7 +27,7 @@ class UserService {
       throw new BadRequestError('INVALID_USERNAME_PASSWORD')
     }
 
-    let token = tokenService.createAccessToken(user)
+    let token = tokenService.createAccessToken(user.email)
     return token;
   }
 }
