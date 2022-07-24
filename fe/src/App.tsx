@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { Layout } from './components';
 import { Home, ShareMovie } from './pages';
 import AuthProvider from './providers/AuthProvider';
 import './styles.scss';
@@ -6,12 +7,12 @@ import './styles.scss';
 function App() {
   return (
     <AuthProvider>
-      <div className="App">
-        <Routes>
+      <Routes>
+        <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/share" element={<ShareMovie />} />
-        </Routes>
-      </div>
+        </Route>
+      </Routes>
     </AuthProvider>
   );
 }
