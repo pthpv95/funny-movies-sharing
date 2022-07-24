@@ -26,7 +26,7 @@ class MovieService {
   }
 
   async getMovies() {
-    return Movie.find();
+    return Movie.find().sort({ createdAt: -1 });
   }
 
   private getYoutubeVideoIdFromUrl(url: string) {
