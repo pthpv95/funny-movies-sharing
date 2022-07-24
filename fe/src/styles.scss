@@ -59,5 +59,8 @@
   form{
     display: flex;
     gap: 15px;
+    input{
+      width: 500px;
+    }
   }
 }

@@ -15,8 +15,9 @@ let ShareMovie = () => {
       setUrl('');
       alert('Share movie successfully')
       navigate('/')
-    } catch (error) {
-      alert('Invalid Youtube url')
+    } catch (err: any) {
+      let { errors } = await err.json();
+      alert(errors[0].message);
     }
   };
 
