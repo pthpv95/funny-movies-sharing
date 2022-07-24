@@ -21,25 +21,25 @@ app.get("/", async (req: Request, res: Response) => {
   res.send("Hello world.")
 })
 
-app.post('/api/login', async (req, res) => {
+app.post('/api/sign-in', async (req, res) => {
   let { email, password } = req.body
-  let token = await userService.authenticateUser(email, password)
+  let user = await userService.findUserByEmail(email);
+  let token: string;
+  if (!user) {
+    // new user
+    await userService.createUser(email, password);
+    token = tokenService.createAccessToken(email);
+  } else {
+    // existing user
+    token = await userService.authenticateUser(email, password)
+  }
   tokenService.sendRefreshToken(res, token);
   res.status(200).send({ data: { token } })
 });
 
-app.post('/api/register', async (req, res) => {
-  let body = req.body
-  let user = await userService.register(body.email, body.password);
-  res.send({ data: { user } });
-});
-
 app.post('/api/movies', authorized, async (req, res) => {
-  let body = req.body
-  let createdBy = 'hp@mgail.com';
-  console.log("🚀 ~ file: app.ts ~ line 39 ~ app.post ~ body", body)
-  await movieService.createMovie(body.url, createdBy);
-  res.send();
+  await movieService.createMovie(req.body.url, req.currentUser.email);
+  res.status(201).send();
 });
 
 app.get('/api/movies', async (req, res) => {

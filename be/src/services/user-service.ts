@@ -5,7 +5,7 @@ import { encryptPassword } from "../utils";
 import { tokenService } from './token-service';
 
 class UserService {
-  async register(email: string, password: string) {
+  async createUser(email: string, password: string) {
     let existingUser = await User.findOne({ email });
     if (existingUser) {
       throw new BadRequestError('DUPLICATE_EMAIL')
@@ -16,19 +16,23 @@ class UserService {
     return user;
   }
 
-  async authenticateUser(email: string, password: string){
+  async authenticateUser(email: string, password: string) {
     let user = await User.findOne({ email });
-    if(!user){
+    if (!user) {
       throw new NotFoundError('USER_NOT_FOUND')
     }
 
     let same = await bcrypt.compare(password, user.password)
-    if(!same){
+    if (!same) {
       throw new BadRequestError('INVALID_USERNAME_PASSWORD')
     }
 
     let token = tokenService.createAccessToken(user.email)
     return token;
+  }
+
+  async findUserByEmail(email: string) {
+    return User.findOne({ email });
   }
 }
 

@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 import { UnauthorizedError } from '../errors/unauthorized-error';
 export interface AuthorizedUser {
-  userId: string;
+  email: string;
 }
 declare global {
   namespace Express {

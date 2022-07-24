@@ -5,7 +5,7 @@ import { sign } from "jsonwebtoken"
 class TokenService {
   createAccessToken (email: string){
     return sign({ email }, process.env.ACCESS_TOKEN_SECRET!, {
-      expiresIn: "15s",
+      expiresIn: "1h",
     })
   }
   
