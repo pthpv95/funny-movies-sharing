@@ -16,12 +16,14 @@ class MovieService {
 
       let url = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${process.env.GOOGLE_API_KEY}&part=snippet`;
       let response = await axios.get(url)
-      let { title, description } = response.data.items[0].snippet;
+      let item = response.data.items[0]
+      let { id, title, description } = item.snippet;
       await Movie.create({
         createdBy,
         title,
         description,
-        url: videoUrl
+        url: videoUrl,
+        embedId: item.id
       })
     } catch (error) {
       throw new BadRequestError('CANNOT_CREATE_MOVIE')

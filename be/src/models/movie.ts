@@ -9,6 +9,9 @@ const movieSchema = new mongoose.Schema(
     title: {
       type: String,
     },
+    embedId: {
+      type: String,
+    },
     description: {
       type: String,
     },
