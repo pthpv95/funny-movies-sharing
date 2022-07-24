@@ -37,6 +37,11 @@ app.post('/api/sign-in', async (req, res) => {
   res.status(200).send({ data: { token } })
 });
 
+app.post('/api/sign-out', async (req, res) => {
+  tokenService.sendRefreshToken(res, "")
+  res.send({})
+})
+
 app.post('/api/movies', authorized, async (req, res) => {
   await movieService.createMovie(req.body.url, req.currentUser.email);
   res.status(201).send({});
