@@ -6,10 +6,15 @@ let ShareMovie = () => {
   let handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    await httpClient.post('/api/movies', {
-      url,
-    });
-    setUrl('');
+    try {
+      await httpClient.post('/api/movies', {
+        url,
+      });
+      setUrl('');  
+      alert('Share movie successfully')
+    } catch (error) {
+      alert('Invalid Youtube url')
+    }
   };
 
   return (

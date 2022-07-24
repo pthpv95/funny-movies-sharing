@@ -26,8 +26,8 @@ const MovieItem = ({ item }: { item: IMovie }) => {
       </div>
       <div className="info">
         <p className="title">{item.title}</p>
-        <p>Shared by: {item.createdBy}</p>
-        <p>Description:</p>
+        <p><strong>Shared by: {item.createdBy}</strong></p>
+        <p><strong>Description: </strong></p>
         <div className="description">{item.description}</div>
       </div>
     </div>

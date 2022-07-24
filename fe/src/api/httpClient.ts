@@ -55,6 +55,9 @@ export class HttpClient {
 
   private status(res: any, responseType: ResponseType) {
     if (!res.ok) {
+      if (res.status === 401) {
+        sessionStorage.clear();
+      }
       throw res
     }
     if (responseType === 'text') {
