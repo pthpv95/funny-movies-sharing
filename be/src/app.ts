@@ -39,7 +39,7 @@ app.post('/api/sign-in', async (req, res) => {
 
 app.post('/api/movies', authorized, async (req, res) => {
   await movieService.createMovie(req.body.url, req.currentUser.email);
-  res.status(201).send();
+  res.status(201).send({});
 });
 
 app.get('/api/movies', async (req, res) => {

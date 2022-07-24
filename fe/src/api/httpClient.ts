@@ -1,9 +1,25 @@
 type ResponseType = 'json' | 'text' | 'blob';
-const baseUrl = 'http://localhost:3001';
+const baseUrl = import.meta.env.VITE_API_HOST;
 
 export class HttpClient {
   private getUrl(relativeUrl: string) {
     return `${baseUrl}${relativeUrl}`;
+  }
+
+  getHeader() {
+    let token = sessionStorage.getItem('access_token')
+    let header = {
+      'Content-Type': 'application/json',
+    }
+
+    if (!token) {
+      return header
+    }
+
+    return {
+      ...header,
+      'Authorization': `Bearer ${token}`
+    }
   }
 
   public get(
@@ -15,7 +31,7 @@ export class HttpClient {
       credentials: 'include',
       headers: {
         ...headers,
-        'Content-Type': 'application/json',
+        ...this.getHeader()
       },
     }).then((res) => this.status(res, responseType));
   }
@@ -31,7 +47,7 @@ export class HttpClient {
       credentials: 'include',
       headers: {
         ...headers,
-        'Content-Type': 'application/json',
+        ...this.getHeader()
       },
       method: 'POST',
     }).then((res) => this.status(res, responseType));

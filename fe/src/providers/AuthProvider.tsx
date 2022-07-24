@@ -16,6 +16,7 @@ const AuthProvider = (props: any) => {
     try {
       let { data } = await httpClient.post('/api/sign-in', { email, password });
       let decodedToken: any = jwt_decode(data.token);
+      sessionStorage.setItem('access_token', data.token);
       setAuthUser({ email: decodedToken.email, accessToken: data.token });
     } catch (err: any) {
       let { errors } = await err.json();
@@ -24,6 +25,7 @@ const AuthProvider = (props: any) => {
   };
 
   let signOut = () => {
+    sessionStorage.clear();
     setAuthUser(null);
   };
 

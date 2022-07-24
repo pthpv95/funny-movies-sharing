@@ -5,19 +5,14 @@ import { Movie } from "../models";
 class MovieService {
   async createMovie(videoUrl: string, createdBy: string) {
     let videoId = this.getYoutubeVideoIdFromUrl(videoUrl);
+    if (!videoId) {
+      throw new BadRequestError('INVALID_URL')
+    }
     try {
-      if (!videoId) {
-        await Movie.create({
-          createdBy,
-          url: videoUrl
-        })
-        return
-      }
-
       let url = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${process.env.GOOGLE_API_KEY}&part=snippet`;
       let response = await axios.get(url)
       let item = response.data.items[0]
-      let { id, title, description } = item.snippet;
+      let { title, description } = item.snippet;
       await Movie.create({
         createdBy,
         title,
