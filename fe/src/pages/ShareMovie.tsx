@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { httpClient } from '../api/httpClient';
+import { useNavigate } from 'react-router-dom';
 
 let ShareMovie = () => {
+  let navigate = useNavigate();
   let [url, setUrl] = useState('');
   let handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -10,8 +12,9 @@ let ShareMovie = () => {
       await httpClient.post('/api/movies', {
         url,
       });
-      setUrl('');  
+      setUrl('');
       alert('Share movie successfully')
+      navigate('/')
     } catch (error) {
       alert('Invalid Youtube url')
     }
@@ -28,6 +31,7 @@ let ShareMovie = () => {
               required
               type={'text'}
               value={url}
+              autoFocus
               onChange={(e: any) => setUrl(e.target.value)}
             />
           </div>

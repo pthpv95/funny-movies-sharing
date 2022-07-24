@@ -57,6 +57,7 @@ export class HttpClient {
     if (!res.ok) {
       if (res.status === 401) {
         sessionStorage.clear();
+        window.location.reload();
       }
       throw res
     }
