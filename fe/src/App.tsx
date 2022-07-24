@@ -1,13 +1,15 @@
-import { Header } from './components'
-import './styles.scss'
-import { Home } from './pages'
+import { Home } from './pages';
+import AuthProvider from './providers/AuthProvider';
+import './styles.scss';
 
 function App() {
   return (
-    <div className="App">
-     <Home />
-    </div>
-  )
+    <AuthProvider>
+      <div className="App">
+        <Home />
+      </div>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;

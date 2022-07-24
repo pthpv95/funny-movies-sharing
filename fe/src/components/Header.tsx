@@ -1,34 +1,23 @@
-import { useState } from 'react';
+import { useAuth } from '../hooks';
+import SignInUpForm from './SignInUp';
+
+let LoggedIn = () => {
+  const { authUser, signOut } = useAuth();
+  return (
+    <div className="logged-in-state">
+      <p>Welcome {authUser.email}</p>
+      <button>Share a movie </button>
+      <button onClick={signOut}>Logout</button>
+    </div>
+  );
+};
 
 const Header = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    
-  };
-
+  const { authUser } = useAuth();
   return (
     <div className="header">
       <h2>Funny Movies</h2>
-      <form onSubmit={handleSubmit} className="form-sign-in-up">
-        <input
-          type="email"
-          value={email}
-          required
-          placeholder="email"
-          onChange={(e: any) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          value={password}
-          required
-          placeholder="password"
-          onChange={(e: any) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login / Register</button>
-      </form>
+      {authUser ? <LoggedIn /> : <SignInUpForm />}
     </div>
   );
 };

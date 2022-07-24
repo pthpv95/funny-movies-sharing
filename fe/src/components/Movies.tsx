@@ -28,14 +28,14 @@ let getVideoIdFromUrl = (url: string) => {
 const MovieItem = ({ item }: any) => {
   return (
     <div className='movie-item'>
-      <iframe
+      {/* <iframe
         width={400}
         height={250}
         src="https://www.youtube.com/embed/4HZiKcWRFA8"
         title="Diệp Vấn quỳ lạy một tên vô danh tiểu tốt, cứu được con trai lại bị vợ tát sấp mặt | Diệp Vấn 3"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      ></iframe>
+      ></iframe> */}
       <div className='info'>
         <p>
           <strong>{item.title}</strong>
