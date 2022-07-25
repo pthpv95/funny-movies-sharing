@@ -4,7 +4,6 @@ import 'dotenv/config';
 import express, { Request, Response } from 'express';
 import "express-async-errors";
 
-import './db/mongoose';
 import { authorized, errorHandler } from "./middlewares";
 import { movieService } from "./services/movie-service";
 import { tokenService } from "./services/token-service";
@@ -43,8 +42,8 @@ app.post('/api/sign-out', async (req, res) => {
 })
 
 app.post('/api/movies', authorized, async (req, res) => {
-  await movieService.createMovie(req.body.url, req.currentUser.email);
-  res.status(201).send({});
+  let movie = await movieService.createMovie(req.body.url, req.currentUser.email);
+  res.status(201).send({ data: { movie } });
 });
 
 app.get('/api/movies', async (req, res) => {
@@ -54,8 +53,4 @@ app.get('/api/movies', async (req, res) => {
 
 app.use(errorHandler)
 
-const port = process.env.PORT || 3001
-
-app.listen(port, () => {
-  console.log(`Chat app listening at http://localhost:${port}`)
-})
+export default app

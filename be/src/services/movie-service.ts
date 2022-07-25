@@ -13,7 +13,7 @@ class MovieService {
       let response = await axios.get(url)
       let item = response.data.items[0]
       let { title, description } = item.snippet;
-      await Movie.create({
+      return Movie.create({
         createdBy,
         title,
         description,
