@@ -1,0 +1,103 @@
+// Vitest Snapshot v1
+
+exports[`App > renders correctly 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="header"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+      style={
+        {
+          "textDecoration": "none",
+        }
+      }
+    >
+      <h2>
+        🏠Funny Movies
+      </h2>
+    </a>
+    <form
+      className="form-sign-in-up"
+      onSubmit={[Function]}
+    >
+      <input
+        onChange={[Function]}
+        placeholder="email"
+        required={true}
+        type="email"
+        value=""
+      />
+      <input
+        onChange={[Function]}
+        placeholder="password"
+        required={true}
+        type="password"
+        value=""
+      />
+      <button
+        type="submit"
+      >
+        Login / Register
+      </button>
+    </form>
+  </div>
+  <div
+    className="movie-list"
+  />
+</div>
+`;
+
+exports[`My app > renders correctly 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="header"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+      style={
+        {
+          "textDecoration": "none",
+        }
+      }
+    >
+      <h2>
+        🏠Funny Movies
+      </h2>
+    </a>
+    <form
+      className="form-sign-in-up"
+      onSubmit={[Function]}
+    >
+      <input
+        onChange={[Function]}
+        placeholder="email"
+        required={true}
+        type="email"
+        value=""
+      />
+      <input
+        onChange={[Function]}
+        placeholder="password"
+        required={true}
+        type="password"
+        value=""
+      />
+      <button
+        type="submit"
+      >
+        Login / Register
+      </button>
+    </form>
+  </div>
+  <div
+    className="movie-list"
+  />
+</div>
+`;
