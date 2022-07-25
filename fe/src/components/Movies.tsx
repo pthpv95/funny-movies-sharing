@@ -41,7 +41,7 @@ const Movies = () => {
       setMovies(res.data.movies);
     });
   }, []);
-
+  
   return (
     <div className="movie-list">
       {movies?.map((item) => {

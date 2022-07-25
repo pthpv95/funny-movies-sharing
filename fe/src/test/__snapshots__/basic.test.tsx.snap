@@ -51,7 +51,7 @@ exports[`App > renders correctly 1`] = `
 </div>
 `;
 
-exports[`Header > Given view for guest > should render sign in/up 1`] = `
+exports[`Header > Given view for guest > should render sign in/up button 1`] = `
 <div
   className="header"
 >
@@ -130,5 +130,82 @@ exports[`Header > Given view for signed in user > should render Logout button 1`
       Logout
     </button>
   </div>
+</div>
+`;
+
+exports[`Home > should render correctly 1`] = `
+<div
+  className="movie-list"
+>
+  <div
+    className="movie-item"
+  >
+    <div>
+      <iframe
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen={true}
+        frameBorder="0"
+        height={300}
+        src="https://www.youtube.com/embed/undefined"
+        title="youtube"
+        width={450}
+      />
+    </div>
+    <div
+      className="info"
+    >
+      <p
+        className="title"
+      >
+        youtube
+      </p>
+      <p>
+        <strong>
+          Shared by: 
+        </strong>
+      </p>
+      <p>
+        <strong>
+          Description: 
+        </strong>
+      </p>
+      <div
+        className="description"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ShareMovie > should render correctly 1`] = `
+<div
+  className="share-movie"
+>
+  <fieldset>
+    <legend>
+      Share a Youtube movie
+    </legend>
+    <form
+      onSubmit={[Function]}
+    >
+      <div>
+        <label>
+          Youtube URL: 
+        </label>
+        <input
+          autoFocus={true}
+          onChange={[Function]}
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <button
+        type="submit"
+      >
+        Share
+      </button>
+    </form>
+  </fieldset>
 </div>
 `;
