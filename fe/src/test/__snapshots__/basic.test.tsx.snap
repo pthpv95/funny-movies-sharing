@@ -51,53 +51,84 @@ exports[`App > renders correctly 1`] = `
 </div>
 `;
 
-exports[`My app > renders correctly 1`] = `
+exports[`Header > Given view for guest > should render sign in/up 1`] = `
 <div
-  className="App"
+  className="header"
 >
-  <div
-    className="header"
-  >
-    <a
-      href="/"
-      onClick={[Function]}
-      style={
-        {
-          "textDecoration": "none",
-        }
+  <a
+    href="/"
+    onClick={[Function]}
+    style={
+      {
+        "textDecoration": "none",
       }
+    }
+  >
+    <h2>
+      🏠Funny Movies
+    </h2>
+  </a>
+  <form
+    className="form-sign-in-up"
+    onSubmit={[Function]}
+  >
+    <input
+      onChange={[Function]}
+      placeholder="email"
+      required={true}
+      type="email"
+      value=""
+    />
+    <input
+      onChange={[Function]}
+      placeholder="password"
+      required={true}
+      type="password"
+      value=""
+    />
+    <button
+      type="submit"
     >
-      <h2>
-        🏠Funny Movies
-      </h2>
-    </a>
-    <form
-      className="form-sign-in-up"
-      onSubmit={[Function]}
-    >
-      <input
-        onChange={[Function]}
-        placeholder="email"
-        required={true}
-        type="email"
-        value=""
-      />
-      <input
-        onChange={[Function]}
-        placeholder="password"
-        required={true}
-        type="password"
-        value=""
-      />
-      <button
-        type="submit"
-      >
-        Login / Register
-      </button>
-    </form>
-  </div>
+      Login / Register
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Header > Given view for signed in user > should render Logout button 1`] = `
+<div
+  className="header"
+>
+  <a
+    href="/"
+    onClick={[Function]}
+    style={
+      {
+        "textDecoration": "none",
+      }
+    }
+  >
+    <h2>
+      🏠Funny Movies
+    </h2>
+  </a>
   <div
-    className="movie-list"
-  />
+    className="logged-in-state"
+  >
+    <p>
+      Welcome 
+      test@gmail.com
+    </p>
+    <button
+      onClick={[Function]}
+    >
+      Share a movie
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Logout
+    </button>
+  </div>
 </div>
 `;

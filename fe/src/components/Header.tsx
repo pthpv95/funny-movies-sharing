@@ -14,7 +14,7 @@ let LoggedIn = () => {
           navigate('/share');
         }}
       >
-        Share a movie{' '}
+        Share a movie
       </button>
       <button onClick={signOut}>Logout</button>
     </div>
@@ -23,7 +23,6 @@ let LoggedIn = () => {
 
 const Header = () => {
   const { authUser } = useAuth();
-  let navigate = useNavigate();
   return (
     <div className="header">
       <Link to="/" style={{ textDecoration: 'none' }}>
