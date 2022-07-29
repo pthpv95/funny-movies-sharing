@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/app.ts",
+    "dev": "ts-node-dev src/index.ts",
     "build": "rimraf ./build && tsc",
     "start": "NODE_ENV=production node build/app.js",
     "test": "jest --watchAll --no-cache"
